@@ -1,37 +1,33 @@
 <html>
-  <head>
-    <title>Welcome to Feathers</title>
-  </head>
-  <body style="margin: 100px;">
 
-    <input type="text" placeholder="Message Content" id="message">
-    <button onClick="sendMessage()">Send Message!</button>
+<head>
 
-    <div id="messageList"></div>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-    <script src="//unpkg.com/@feathersjs/client@^3.0.0/dist/feathers.js"></script>
-    <script src="//unpkg.com/socket.io-client@1.7.3/dist/socket.io.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" />
 
-    <script type="text/javascript">
+  <title>Vanilla JavaScript Feathers Chat</title>
 
-        var socket = io();
+  <link rel="shortcut icon" href="favicon.ico">
 
-        var app = feathers()
-            .configure(feathers.socketio(socket));
+  <link rel="stylesheet" href="//cdn.rawgit.com/feathersjs/feathers-chat/v0.2.0/public/base.css">
 
-        var messages = app.service('messages');
+  <link rel="stylesheet" href="//cdn.rawgit.com/feathersjs/feathers-chat/v0.2.0/public/chat.css">
 
-        messages.on('created', (message) => {
-            var messageList = document.getElementById("messageList");
-            messageList.innerHTML += "<h4>" + message.text+ "</h4>";
-            console.log('your message was sent!', message.text) //?
-      });
+</head>
 
-        function sendMessage() {
-            var messageValue = document.getElementById('message').value;
-            messages.create({text: messageValue})
-      }
+<body>
 
-    </script>
-  </body>
+  <div id="app" class="flex flex-column"></div>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
+
+  <script src="//unpkg.com/@feathersjs/client@^3.0.0/dist/feathers.js"></script>
+
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script src="app.js"></script>
+
+</body>
+
 </html>

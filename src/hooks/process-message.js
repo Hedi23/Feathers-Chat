@@ -16,10 +16,10 @@ module.exports = function (options = {}) {
     // The actual message text
     const text = context.data.text
       // Messages can't be longer than 400 characters
-      .substring(0,400);
+      .substring(0, 400);
 
-    // Override the original data (so that people can't submit additional stuff )
-    context.data  = {
+    // Override the original data (so that people can't submit additional stuff)
+    context.data = {
       text,
       // Set the user id
       userId: user._id,
@@ -27,7 +27,7 @@ module.exports = function (options = {}) {
       createdAt: new Date().getTime()
     };
 
-    // Best practice hooks should always return the context
+    // Best practice: hooks should always return the context
     return context;
   };
 };

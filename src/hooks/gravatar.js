@@ -6,11 +6,10 @@ const crypto = require('crypto');
 
 // The Gravatar image service
 const gravatarUrl = 'https://s.gravatar.com/avatar';
-// The size query. Our Chat needs 60px images
+// The size query. Our chat needs 60px images
 const query = 's=60';
 
-// eslint-disable-next-line no-unused-vars
-module.exports = function (options = {}) {
+module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
   return async context => {
     // The user email
     const { email } = context.data;
